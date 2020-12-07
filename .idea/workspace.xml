@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7868184a-be84-441d-a888-f094f512521e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/local/go" />
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1jMW8xs0BZQFJOYsfqDTYpeTY0Z" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/services/customerservice" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/services/customerservice" />
+      <recent name="$PROJECT_DIR$/data/hanhchinhvn" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\truongit98\go\src\BookStore\services\categoryservice" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Build.go build BookStore">
+    <configuration name="go build BookStore" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="BookStore" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="BookStore" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build BookStore/tools" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="BookStore" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/tools/import_csv_book.go" />
+      <package value="BookStore/tools" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build BookStore" />
+        <item itemvalue="Go Build.go build BookStore/tools" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="478" y="325" key="#GOROOT" timestamp="1604543048212">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="478" y="325" key="#GOROOT/0.27.1366.741@0.27.1366.741" timestamp="1604543048212" />
+    <state x="420" y="152" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603682661992">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="420" y="152" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1603682661992" />
+    <state width="826" height="483" key="DebuggerActiveHint" timestamp="1607251349039">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="719" height="466" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1603813571601" />
+    <state width="826" height="483" key="DebuggerActiveHint/0.27.1366.741@0.27.1366.741" timestamp="1607251349039" />
+    <state x="453" y="134" width="424" height="482" key="FileChooserDialogImpl" timestamp="1606875172959">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="453" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1603814054946" />
+    <state x="453" y="134" width="424" height="482" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1606875172959" />
+    <state width="1320" height="207" key="GridCell.Tab.0.bottom" timestamp="1607255833085">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603822767854" />
+    <state width="1320" height="207" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1607255833085" />
+    <state width="1320" height="207" key="GridCell.Tab.0.center" timestamp="1607255833084">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603822767854" />
+    <state width="1320" height="207" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1607255833084" />
+    <state width="1320" height="207" key="GridCell.Tab.0.left" timestamp="1607255833067">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603822767854" />
+    <state width="1320" height="207" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1607255833067" />
+    <state width="1320" height="207" key="GridCell.Tab.0.right" timestamp="1607255833084">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603822767854" />
+    <state width="1320" height="207" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1607255833084" />
+    <state width="1320" height="207" key="GridCell.Tab.1.bottom" timestamp="1607255076465">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603822767824" />
+    <state width="1320" height="207" key="GridCell.Tab.1.bottom/0.27.1366.741@0.27.1366.741" timestamp="1607255076465" />
+    <state width="1320" height="207" key="GridCell.Tab.1.center" timestamp="1607255076464">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1603822767823" />
+    <state width="1320" height="207" key="GridCell.Tab.1.center/0.27.1366.741@0.27.1366.741" timestamp="1607255076464" />
+    <state width="1320" height="207" key="GridCell.Tab.1.left" timestamp="1607255076464">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1603822767823" />
+    <state width="1320" height="207" key="GridCell.Tab.1.left/0.27.1366.741@0.27.1366.741" timestamp="1607255076464" />
+    <state width="1320" height="207" key="GridCell.Tab.1.right" timestamp="1607255076465">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1603822767824" />
+    <state width="1320" height="207" key="GridCell.Tab.1.right/0.27.1366.741@0.27.1366.741" timestamp="1607255076465" />
+    <state x="140" y="38" key="SettingsEditor" timestamp="1604686513561">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="140" y="38" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1604686513561" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1604658659532">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.27.1366.741@0.27.1366.741" timestamp="1604658659532" />
+    <state width="683" height="371" key="XDebugger.FullValuePopup" timestamp="1607165137924">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="683" height="371" key="XDebugger.FullValuePopup/0.27.1366.741@0.27.1366.741" timestamp="1607165137924" />
+    <state x="0" y="27" width="616" height="741" key="find.popup" timestamp="1607167584487">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="0" y="27" width="616" height="741" key="find.popup/0.27.1366.741@0.27.1366.741" timestamp="1607167584487" />
+    <state x="526" y="149" width="337" height="487" key="refactoring.ChangeSignatureDialog" timestamp="1604691913584">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="526" y="125" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1604505119127" />
+    <state x="526" y="149" width="337" height="487" key="refactoring.ChangeSignatureDialog/0.27.1366.741@0.27.1366.741" timestamp="1604691913584" />
+    <state x="336" y="77" width="670" height="58" key="search.everywhere.popup" timestamp="1607164077073">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="336" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1604505774779" />
+    <state x="336" y="77" width="670" height="58" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1607164077073" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../../pkg/mod/gorm.io/gorm@v1.20.5/migrator/migrator.go</url>
+          <line>181</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../../pkg/mod/gorm.io/gorm@v1.20.5/migrator/migrator.go</url>
+          <line>205</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../../pkg/mod/gorm.io/gorm@v1.20.5/clause/expression.go</url>
+          <line>117</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/models/topic_model.go</url>
+          <line>9</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GoApplicationRunConfiguration">
+        <watch expression="ctx.Request.URL.String()" language="go" />
+        <watch expression="strings.Contains(ctx.Request.URL.String(), &quot;/v1/api/account/admins/login&quot;)" language="go" />
+        <watch expression="!strings.Contains(ctx.Request.URL.String(), &quot;/v1/api/account/admins/login&quot;) ||!strings.Contains(ctx.Request.URL.String(), &quot;/v1/api/account/admins/register&quot;)" language="go" />
+        <watch expression="t.Add((time.Hour * 24) * time.Duration(day))" language="go" />
+        <watch expression="t" language="go" />
+        <watch expression="t.Add((time.Hour * 24) * time.Duration(day)).Unix()" language="go" />
+        <watch expression="t" language="go" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
