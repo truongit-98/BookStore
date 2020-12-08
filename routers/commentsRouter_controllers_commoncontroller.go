@@ -11,7 +11,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetDistrict",
             Router: "/administrative/districts/:cityId",
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -20,7 +20,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetWards",
             Router: "/administrative/wards/:districtId",
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

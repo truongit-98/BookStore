@@ -12,6 +12,7 @@ require (
 	github.com/go-redis/redis/v7 v7.4.0 // indirect
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/gocarina/gocsv v0.0.0-20201103164230-b291445e0dd2
+	github.com/gorilla/websocket v1.4.2
 	github.com/prometheus/common v0.10.0
 	github.com/twinj/uuid v1.0.0
 	gitlab.123xe.vn/cryptocurrencytradingservices/backendservices/transactioninfoservice v0.0.0-20201126180958-a9e1de84c5f5 // indirect

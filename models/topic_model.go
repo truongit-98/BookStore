@@ -9,7 +9,7 @@ import (
 type Topic struct {
 	ID uint `gorm:"primaryKey;autoIncrement" json:"id"`
 	TopicName string `gorm:"size:50" json:"topic_name"`
-	CategoryID uint `json:"topic_id"`
+	CategoryID *uint `json:"topic_id"`
 	Specifications []*BookDetail `json:"specifications"`
 }
 

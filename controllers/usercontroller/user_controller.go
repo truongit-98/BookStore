@@ -73,7 +73,7 @@ func (this *UserController) LoginUser() {
 		}
 		return
 	}
-	token, err := util.CreateToken(userId, util.ACCOUNT_USER)
+	token, err := utils.CreateToken(userId, utils.ACCOUNT_USER)
 	if err != nil {
 		this.Data["json"] = responseservice.GetCommonErrorResponse(responses.ErrUnknown)
 		return

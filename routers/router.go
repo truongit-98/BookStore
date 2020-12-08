@@ -15,12 +15,15 @@ import (
 	"BookStore/controllers/commoncontroller"
 	"BookStore/controllers/customercontroller"
 	"BookStore/controllers/ordercontroller"
+	"BookStore/controllers/paymentcontroller"
 	"BookStore/controllers/permissioncontroller"
 	"BookStore/controllers/publishercontroller"
 	"BookStore/controllers/rolecontroller"
 	"BookStore/controllers/rolepermissioncontrolcontroller"
 	"BookStore/controllers/rolepermissioncontroller"
 	"BookStore/controllers/roleusercontroller"
+	"BookStore/controllers/vouchercontroller"
+	"BookStore/controllers/websocketcontroller"
 	"github.com/astaxie/beego"
 )
 
@@ -39,6 +42,21 @@ func init() {
 		beego.NSNamespace("/orders",
 			beego.NSInclude(
 				&ordercontroller.OrderController{},
+			),
+		),
+		beego.NSNamespace("/wsorders",
+			beego.NSInclude(
+				&websocketcontroller.OrderbookWSController{},
+			),
+		),
+		beego.NSNamespace("/payments",
+			beego.NSInclude(
+				&paymentcontroller.PaymentController{},
+			),
+		),
+		beego.NSNamespace("/vouchers",
+			beego.NSInclude(
+				&vouchercontroller.VoucherController{},
 			),
 		),
 		beego.NSNamespace("/authorization/roles",

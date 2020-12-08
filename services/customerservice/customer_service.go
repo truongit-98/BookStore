@@ -87,8 +87,20 @@ func UpdateUserAccount(body requestbody.AccountPutRequest) error {
 	return responses.NotExisted
 }
 
-func GetCustomerInfo(custId int) (*models.Customer, error) {
+func GetCustomerById(custId int) (*models.Customer, error) {
 	customer, err := models.GetById(&models.Customer{}, uint(custId))
+	if err != nil{
+		log.Info(err)
+		if errors.Is(gorm.ErrRecordNotFound, err){
+			return nil, responses.NotExisted
+		}
+		return nil, responses.ErrSystem
+	}
+	return customer.(*models.Customer), nil
+}
+
+func GetCustomerInfo(custId int32) (*models.Customer, error) {
+	customer, err := (&models.Customer{}).GetCustomerInfo(uint(custId))
 	if err != nil{
 		log.Info(err)
 		if errors.Is(gorm.ErrRecordNotFound, err){

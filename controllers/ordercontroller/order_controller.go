@@ -6,6 +6,7 @@ import (
 	"BookStore/services/orderservice"
 	"BookStore/services/responseservice"
 	"encoding/json"
+	"log"
 	"github.com/astaxie/beego"
 )
 
@@ -21,11 +22,12 @@ type OrderController struct {
 // @router /checkout [post]
 func (this *OrderController) CheckoutOrder() {
 	defer this.ServeJSON()
-	user := this.Ctx.Request.Header.Get("user")
+	user := this.Ctx.Request.Header.Get("User")
 	if user != "" {
 		body := requestbody.OrderInformation{}
 		err := json.Unmarshal(this.Ctx.Input.RequestBody, &body)
 		if err != nil {
+			log.Println(err)
 			this.Data["json"] = responseservice.GetCommonErrorResponse(responses.BadRequest)
 			return
 		}
@@ -37,6 +39,21 @@ func (this *OrderController) CheckoutOrder() {
 		this.Data["json"] = responseservice.GetCommonSucceedResponse()
 		return
 	}
+	log.Println("user is required")
 	this.Data["json"] = responseservice.GetCommonErrorResponse(responses.BadRequest)
+}
 
+// @Title OrderHistory
+// @Description order history
+// @Param	token	header true	string	"token"
+// @Success 200 {object} responses.ResponseCommonArray
+// @router /history [get]
+func (this *OrderController) GetOrderHistory() {
+	defer this.ServeJSON()
+	data, err := orderservice.OrderHistory()
+	if err != nil {
+		this.Data["json"] = responseservice.GetCommonErrorResponseArray(err)
+		return
+	}
+	this.Data["json"] = responseservice.GetCommonSucceedResponseWithData(data)
 }

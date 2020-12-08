@@ -20,6 +20,6 @@ type receiveInfo struct {
 type OrderInformation struct {
 	ReceiveInfo *receiveInfo `json:"receive_info"`
 	Orders []*order `json:"orders"`
-	PaymentMethod int `json:"payment_method"`	
+	PaymentMethod uint `json:"payment_method"`
 	Coupon string `json:"coupon"`
 }

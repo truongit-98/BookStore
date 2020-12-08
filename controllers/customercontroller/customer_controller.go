@@ -5,7 +5,7 @@ import (
 	"BookStore/restapi/responses"
 	"BookStore/services/customerservice"
 	"BookStore/services/responseservice"
-	"BookStore/util"
+	"BookStore/utils"
 	"encoding/json"
 	"github.com/astaxie/beego"
 )
@@ -75,7 +75,7 @@ func (this *CustomerController) LoginAdmin() {
 		}
 		return
 	}
-	token, err := util.CreateToken(userId, util.ACCOUNT_USER)
+	token, err := utils.CreateToken(userId, utils.ACCOUNT_USER)
 	if err != nil {
 		this.Data["json"] = responseservice.GetCommonErrorResponse(responses.ErrUnknown)
 		return
@@ -92,8 +92,8 @@ func (this *CustomerController) LoginAdmin() {
 	this.Data["json"] = responseservice.GetCommonSucceedResponseWithData(tokens)
 }
 
-// @Title GetAdmins
-// @Description get roles
+// @Title GetCustomers
+// @Description GetCustomers
 // @Param	token	header 	string true	"token"
 // @Param	pos	query	int64	false	"Position"
 // @Param	count	query	int64	false	"Count"
@@ -135,4 +135,26 @@ func (this *CustomerController) GetPaginate(pos, count int32) {
 		return
 	}
 	this.Data["json"] = responseservice.GetCommonSucceedResponseArray(roles, totalCount)
+}
+
+// @Title GetCustomers
+// @Description GetCustomers
+// @Param	token	header 	string true	"token"
+// @Param	userId	path	int32	false	"userId"
+// @Success 200 {object} responses.ResponseCommonSingle
+// @router /detail/:userId [get]
+func (this *CustomerController) GetInfo() {
+	defer this.ServeJSON()
+	customerId, err := this.GetInt32(":userId", 0)
+	if err != nil {
+		this.Data["json"] = responseservice.GetCommonErrorResponse(responses.BadRequest)
+		return
+	}
+	info, err := customerservice.GetCustomerInfo(customerId)
+	if err != nil {
+		this.Data["json"] = responseservice.GetCommonErrorResponse(err)
+		return
+	}
+	this.Data["json"] = responseservice.GetCommonSucceedResponseWithData(info)
+
 }

@@ -10,9 +10,9 @@ type Comment struct {
 	ID uint `gorm:"primaryKey;autoIncrement" json:"id"`
 	Content string `gorm:"type:text" json:"content"`
 	CommentTime int64 `json:"comment_time"`
-	Rate uint `json:"rate"`
-	BookID uint ` json:"book_id"`
-	CustomerID uint `json:"customer_id"`
+	Rate *uint `json:"rate"`
+	BookID *uint ` json:"book_id"`
+	CustomerID *uint `json:"customer_id"`
 }
 
 func (c Comment) GetPaginate(pos, count int32) (items interface{}, totalCount int32, err error) {

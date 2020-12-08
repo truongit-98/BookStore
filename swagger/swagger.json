@@ -132,8 +132,8 @@
                 "tags": [
                     "account/customer"
                 ],
-                "description": "get roles",
-                "operationId": "CustomerController.GetAdmins",
+                "description": "GetCustomers",
+                "operationId": "CustomerController.GetCustomers",
                 "parameters": [
                     {
                         "in": "header",
@@ -162,6 +162,39 @@
                         "description": "",
                         "schema": {
                             "$ref": "#/definitions/responses.ResponseCommonArray"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/customer/detail/{userId}": {
+            "get": {
+                "tags": [
+                    "account/customer"
+                ],
+                "description": "GetCustomers",
+                "operationId": "CustomerController.GetCustomers",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "description": "userId",
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.ResponseCommonSingle"
                         }
                     }
                 }
@@ -1126,7 +1159,7 @@
             }
         },
         "/common/administrative/districts/{cityId}": {
-            "post": {
+            "get": {
                 "tags": [
                     "common"
                 ],
@@ -1152,7 +1185,7 @@
             }
         },
         "/common/administrative/wards/{districtId}": {
-            "post": {
+            "get": {
                 "tags": [
                     "common"
                 ],
@@ -1213,6 +1246,50 @@
                 }
             }
         },
+        "/orders/history": {
+            "get": {
+                "tags": [
+                    "orders"
+                ],
+                "description": "order history",
+                "operationId": "OrderController.OrderHistory",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "token",
+                        "schema": {
+                            "$ref": "#/definitions/true"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.ResponseCommonArray"
+                        }
+                    }
+                }
+            }
+        },
+        "/payments/": {
+            "get": {
+                "tags": [
+                    "payments"
+                ],
+                "description": "get Payment",
+                "operationId": "PaymentController.GetPayment",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.ResponseCommonArray"
+                        }
+                    }
+                }
+            }
+        },
         "/publishers/with-book-count": {
             "get": {
                 "tags": [
@@ -1229,14 +1306,62 @@
                     }
                 }
             }
+        },
+        "/vouchers/": {
+            "get": {
+                "tags": [
+                    "vouchers"
+                ],
+                "description": "GetVouchers",
+                "operationId": "VoucherController.GetVouchers",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.ResponseCommonArray"
+                        }
+                    }
+                }
+            }
+        },
+        "/wsorders/": {
+            "get": {
+                "tags": [
+                    "wsorders"
+                ],
+                "description": "Get Websocket Orderbook",
+                "operationId": "OrderbookWSController.Get Websocket Orderbook",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "params",
+                        "description": "description",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requestbody.WSBodyRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.ResponseCommonArray"
+                        }
+                    },
+                    "404": {
+                        "description": "nothing here"
+                    }
+                }
+            }
         }
     },
     "definitions": {
-        "209.0xc00060ca50.false": {
+        "209.0xc00094de00.false": {
             "title": "false",
             "type": "object"
         },
-        "483.0xc00060cb70.false": {
+        "483.0xc00094df20.false": {
             "title": "false",
             "type": "object"
         },
@@ -1358,7 +1483,7 @@
                 },
                 "payment_method": {
                     "type": "integer",
-                    "format": "int64"
+                    "format": "int32"
                 },
                 "receive_info": {
                     "$ref": "#/definitions/requestbody.receiveInfo"
@@ -1423,6 +1548,18 @@
                     "type": "boolean"
                 },
                 "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "requestbody.WSBodyRequest": {
+            "title": "WSBodyRequest",
+            "type": "object",
+            "properties": {
+                "channel": {
+                    "type": "string"
+                },
+                "message": {
                     "type": "string"
                 }
             }
@@ -1532,7 +1669,7 @@
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/483.0xc00060cb70.false"
+                    "$ref": "#/definitions/483.0xc00094df20.false"
                 },
                 "error": {
                     "$ref": "#/definitions/responses.Err"
@@ -1548,7 +1685,7 @@
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/209.0xc00060ca50.false"
+                    "$ref": "#/definitions/209.0xc00094de00.false"
                 },
                 "error": {
                     "$ref": "#/definitions/responses.Err"

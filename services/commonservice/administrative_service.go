@@ -2,7 +2,7 @@ package commonservice
 
 import (
 	"BookStore/restapi/responses"
-	"BookStore/util"
+	"BookStore/utils"
 	"bufio"
 	"fmt"
 	"github.com/prometheus/common/log"
@@ -12,7 +12,7 @@ import (
 )
 
 func LoadCities() ([]byte, error) {
-	pathFile := path.Join(util.GetCurrentPath(), "/data/hanhchinhvn/tinh_tp.json")
+	pathFile := path.Join(utils.GetCurrentPath(), "/data/hanhchinhvn/tinh_tp.json")
 	jsonFile, err := os.Open(pathFile)
 	if err != nil {
 		log.Info(err.Error(), "commonservice/commonservice")
@@ -28,7 +28,7 @@ func LoadCities() ([]byte, error) {
 }
 
 func LoadDistrictForCity(cityId string) ([]byte, error) {
-	pathFile := path.Join(util.GetCurrentPath(), fmt.Sprintf("/data/hanhchinhvn/quan-huyen/%s.json", cityId))
+	pathFile := path.Join(utils.GetCurrentPath(), fmt.Sprintf("/data/hanhchinhvn/quan-huyen/%s.json", cityId))
 	jsonFile, err := os.Open(pathFile)
 	if err != nil {
 		log.Info(err.Error(), "commonservice/commonservice")
@@ -45,7 +45,7 @@ func LoadDistrictForCity(cityId string) ([]byte, error) {
 }
 
 func LoadWardsOfDistrict(districtId string) ([]byte, error) {
-	pathFile := path.Join(util.GetCurrentPath(), fmt.Sprintf("/data/hanhchinhvn/xa-phuong/%s.json", districtId))
+	pathFile := path.Join(utils.GetCurrentPath(), fmt.Sprintf("/data/hanhchinhvn/xa-phuong/%s.json", districtId))
 	jsonFile, err := os.Open(pathFile)
 	if err != nil {
 		log.Info(err.Error(), "commonservice/commonservice")

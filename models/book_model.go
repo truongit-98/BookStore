@@ -17,7 +17,7 @@ type Book struct {
 	SKU	string `gorm:"size:20" json:"sku"`
 	Ratting float64 `json:"ratting"`
 	CreatedAt int64 `json:"created_at"`
-	BookTypeID uint `json:"book_type_id"`
+	BookTypeID *uint `json:"book_type_id"`
 	Comments []*Comment `json:"comments"`
 	OrderDetails []*OrderDetail `json:"order_details"`
 }

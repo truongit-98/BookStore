@@ -53,7 +53,7 @@ func CreateBook(body requestbody.BookRequestBody) error {
 		Title: body.Title,
 		CoverImage: body.CoverImage,
 		Amount: int(body.Amount),
-		BookTypeID: body.TypeID,
+		BookTypeID: &body.TypeID,
 	}
 	err := models.Create(book)
 	if err != nil {
@@ -76,7 +76,7 @@ func UpdateBook(body requestbody.BookRequestPutBody) error {
 			Title: body.Title,
 			CoverImage: body.CoverImage,
 			Amount: int(body.Amount),
-			BookTypeID: body.BookTypeID,
+			BookTypeID: &body.BookTypeID,
 		}
 		err = models.Update(book)
 		if err != nil {

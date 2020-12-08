@@ -77,6 +77,20 @@ func (c* Customer) Create() (err error) {
 	return
 }
 
+func (c* Customer) GetCustomerInfo(id uint) (item interface{}, err error) {
+	tx := db.Preload("Orders").Preload("Comments").First(&c, id)
+	if tx.Error != nil {
+		if errors.Is(tx.Error, gorm.ErrRecordNotFound){
+			err = responses.NotExisted
+			return
+		}
+		err = responses.ErrSystem
+		return
+	}
+	item = c
+	return
+}
+
 func (c* Customer) GetById(id uint) (item interface{}, err error) {
 	tx := db.First(&c, id)
 	if tx.Error != nil {

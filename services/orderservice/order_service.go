@@ -1,28 +1,30 @@
 package orderservice
 
 import (
+	"BookStore/events"
 	"BookStore/models"
 	"BookStore/requestbody"
 	"BookStore/restapi/data"
 	"BookStore/restapi/responses"
 	"BookStore/services/commonservice"
 	"BookStore/services/customerservice"
-	"BookStore/util"
+	"BookStore/utils"
 	"encoding/json"
 	"errors"
 	"github.com/prometheus/common/log"
 	"gorm.io/gorm"
 	"strconv"
 	"strings"
+	"time"
 )
-
+type typeStatus = int
 const (
-	STATUS_PENDING = "STATUS_PENDING"
-	STATUS_PROCESSING  = "STATUS_PROCESSING"
-	STATUS_SUCCESS = "STATUS_SUCCESS"
+	STATUS_PENDING typeStatus = iota + 1
+	STATUS_PROCESSING
+	STATUS_SUCCESS
 )
 
-var mapStatusOrder = map[string]string{
+var mapStatusOrder = map[int]string{
 	STATUS_PENDING: "Đang chờ xử lý",
 	STATUS_PROCESSING: "Đang xử lý",
 	STATUS_SUCCESS: "Thành công",
@@ -78,7 +80,7 @@ func CheckoutOrder(req requestbody.OrderInformation, user string) error {
 		log.Info(err.Error())
 		return responses.BadRequest
 	}
-	userInfo, err := customerservice.GetCustomerInfo(userId)
+	userInfo, err := customerservice.GetCustomerById(userId)
 	if err != nil {
 		return err
 	}
@@ -101,10 +103,11 @@ func CheckoutOrder(req requestbody.OrderInformation, user string) error {
 		receiveInfo.Phone = userInfo.Phone
 		receiveInfo.Address = userInfo.Address
 	}
-	now := util.Now()
+	now := utils.Now()
 	bytes, _ := json.Marshal(receiveInfo)
 	receiveInfoStr := string(bytes)
 	// begin transaction
+	var orderId uint
 	err = models.Transaction(func(tx *gorm.DB) error {
 		defer func() {
 			if r := recover(); r != nil {
@@ -112,16 +115,24 @@ func CheckoutOrder(req requestbody.OrderInformation, user string) error {
 			}
 		}()
 		//check coupon
-		couponId, err := checkCoupon(now, req.Coupon)
-		if couponId <= 0{
-			return errors.New("coupon is not valid")
+		var couponId uint
+		var exprired bool = false
+		if req.Coupon != ""{
+			couponId, exprired, err = checkCoupon(now, req.Coupon)
+			if couponId <= 0{
+				return errors.New("coupon is not valid")
+			}
+			if exprired {
+				return errors.New("coupon is exprired")
+			}
 		}
+		customerId := uint(userId)
 		orderIns := models.Order{
 			Status: mapStatusOrder[STATUS_PENDING],
 			OrderDate: now,
 			ReceiveInfo: &receiveInfoStr,
-			CustomerID: uint(userId),
-			PaymentID: uint(req.PaymentMethod),
+			CustomerID: &customerId,
+			PaymentID: &req.PaymentMethod,
 		}
 		if err = tx.Create(&orderIns).Error; err != nil {
 			return err
@@ -129,11 +140,11 @@ func CheckoutOrder(req requestbody.OrderInformation, user string) error {
 		if orderIns.ID == 0{
 			return errors.New("create order error")
 		}
-
+		orderId = orderIns.ID
 		// create order detail
 		for _, order := range req.Orders{
 			orderDetail := models.OrderDetail{
-				OrderID: orderIns.ID,
+				OrderID: orderId,
 				BookID: uint(order.ProductID),
 				Quantity: order.Amount,
 				Price: order.Price,
@@ -143,13 +154,15 @@ func CheckoutOrder(req requestbody.OrderInformation, user string) error {
 			}
 		}
 
-		//create order voucher
-		orderVoucher := models.OrderVouchers{
-			OrderID: orderIns.ID,
-			VoucherID: couponId,
-		}
-		if err = tx.Create(&orderVoucher).Error; err != nil {
-			return err
+		if couponId > 0{
+			//create order voucher
+			orderVoucher := models.OrderVouchers{
+				OrderID: orderId,
+				VoucherID: couponId,
+			}
+			if err = tx.Create(&orderVoucher).Error; err != nil {
+				return err
+			}
 		}
 		return nil
 	})
@@ -157,17 +170,32 @@ func CheckoutOrder(req requestbody.OrderInformation, user string) error {
 		log.Info(err.Error())
 		return responses.ErrSystem
 	}
+	order, _ := models.GetById(&models.Order{}, orderId)
+	if order != nil {
+		go events.BroadcastEvent(events.WsOrderCreated, order)
+	}
+
 	return nil
 }
 
-func checkCoupon(checkTime int64, code string) (id uint, err error) {
+func checkCoupon(checkTime int64, code string) (id uint, expired bool, err error) {
 	coupon, err := (&models.Voucher{}).GetByCode(code)
 	if err != nil  {
 		log.Info(err)
 		if errors.Is(err, gorm.ErrRecordNotFound){
-			return 0, errors.New("coupon is not existed")
+			return 0, false, errors.New("coupon is not existed")
 		}
-		return 0, responses.ErrSystem
+		return 0, false, responses.ErrSystem
 	}
-	return coupon.(*models.Voucher).ID, err
+
+	return coupon.(*models.Voucher).ID, time.Unix(coupon.(*models.Voucher).Expiry, 0).After(time.Unix(checkTime, 0)), err
+}
+
+func OrderHistory() ([]models.Order, error) {
+	orders, err := models.GetAll(&models.Order{})
+	if err != nil {
+		log.Info(err)
+		return nil, responses.ErrSystem
+	}
+	return orders.([]models.Order), nil
 }

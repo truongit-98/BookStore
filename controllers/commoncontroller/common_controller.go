@@ -14,7 +14,7 @@ type CommonController struct {
 // @Description Get District of city
 // @Param	cityId	path 	string	true	"CityID"
 // @Success 200 {object} data.District
-// @router /administrative/districts/:cityId [post]
+// @router /administrative/districts/:cityId [get]
 func (this *CommonController) GetDistrict() {
 	defer this.ServeJSON()
 	cityId := this.GetString(":cityId")
@@ -30,7 +30,7 @@ func (this *CommonController) GetDistrict() {
 // @Description GetWards of district
 // @Param	districtId	path 	string	true	"districtId"
 // @Success 200 {object} data.District
-// @router /administrative/wards/:districtId [post]
+// @router /administrative/wards/:districtId [get]
 func (this *CommonController) GetWards() {
 	defer this.ServeJSON()
 	districtId := this.GetString(":districtId")

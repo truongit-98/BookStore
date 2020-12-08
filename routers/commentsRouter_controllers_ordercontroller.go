@@ -16,4 +16,13 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["BookStore/controllers/ordercontroller:OrderController"] = append(beego.GlobalControllerRouter["BookStore/controllers/ordercontroller:OrderController"],
+        beego.ControllerComments{
+            Method: "GetOrderHistory",
+            Router: "/history",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
 }

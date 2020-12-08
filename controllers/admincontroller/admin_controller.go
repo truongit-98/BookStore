@@ -5,7 +5,7 @@ import (
 	"BookStore/restapi/responses"
 	"BookStore/services/adminservice"
 	"BookStore/services/responseservice"
-	"BookStore/util"
+	"BookStore/utils"
 	"encoding/json"
 	"github.com/astaxie/beego"
 )
@@ -75,7 +75,7 @@ func (this *AdminController) LoginAdmin() {
 		}
 		return
 	}
-	token, err := util.CreateToken(userId, util.ACCOUNT_ADMIN)
+	token, err := utils.CreateToken(userId, utils.ACCOUNT_ADMIN)
 	if err != nil {
 		this.Data["json"] = responseservice.GetCommonErrorResponse(responses.ErrUnknown)
 		return

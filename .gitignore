@@ -19,8 +19,6 @@ run.sh
 clear_cache.sh
 check.sh
 build.sh
-conf/app_dev.conf
-conf/app_prod.conf
 pids
 database/database
 logs.txt
